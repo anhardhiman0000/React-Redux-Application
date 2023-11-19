@@ -8,7 +8,6 @@ import classes from './ProductItem.module.css';
 const ProductItem = (props) => {
 
   //firebase
-  // const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
   const { title, price, description, id } = props;
@@ -16,44 +15,11 @@ const ProductItem = (props) => {
   const addToCartHandler = () => {
     //firebase asynchronus rquest must be here only
     // and then send Http request
-    // fetch('firebase-url', { method: 'POST', body: JSON.stringify(newCart) }); //write in aap.js
-
     dispatch(cartActions.addItemToCart({
       id,
       title,
       price,
     }));
-
-    //+++++++++++++++++firebase synchronus req can write in reducer.++++++++++++++++++++++
-    // // const totalQuantity = cart.totalQuantity + 1; //we can't mutate the value oyher then reducer fxn. We always need to create a new object/memory obj.
-    // const newTotalQuantity = cart.totalQuantity + 1;
-
-    // const updatedItems = cart.items.slice(); // create copy via slice to avoid mutating original state
-    // const existingItem = updatedItems.find((item) => item.id === id);
-
-    // if (existingItem) {
-    //   const updatedItem = { ...existingItem }; // new object + copy existing properties to avoid state mutation
-    //   updatedItem.quantity++;
-    //   updatedItem.totalPrice = updatedItem.totalPrice + price;
-    //   const existingItemIndex = updatedItems.findIndex((item) => item.id === id);
-    //   updatedItems[existingItemIndex] = updatedItem;
-    // } else {
-    //   updatedItems.push({
-    //     id: id,
-    //     price: price,
-    //     quantity: 1,
-    //     totalPrice: price,
-    //     name: title,
-    //   });
-    // }
-
-    // const newCart = {
-    //   totalQuantity: newTotalQuantity,
-    //   items: updatedItems,
-    // };
-
-    // dispatch(cartActions.replaceCart(newCart));
-
   };
 
   return (
